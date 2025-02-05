@@ -20,7 +20,7 @@
 						"type": "text"
 					}
 				],
-				"url": "http://localhost:8000/api/organizations/activity/1"
+				"url": "http://localhost:8000/api/organizations/building/1"
 			},
 			"response": []
 		},
@@ -189,6 +189,36 @@
 					}
 				},
 				"url": "http://localhost:8000/api/organizations/search/name/ООО \"Рога и Копыта\""
+			},
+			"response": []
+		},
+		{
+			"name": "поиск организации по названию деятельности",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/organizations/search/activity/Еда"
 			},
 			"response": []
 		}
