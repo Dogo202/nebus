@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "ea21ad4d-aea1-4f75-a6b7-928b170c17b6",
+		"name": "nebus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39976745"
+	},
+	"item": [
+		{
+			"name": "список всех организаций находящихся в конкретном здании",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/api/organizations/building/1"
+			},
+			"response": []
+		},
+		{
+			"name": "список всех организаций, которые относятся к указанному виду деятельности",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8000/api/organizations/activity/1"
+			},
+			"response": []
+		},
+		{
+			"name": "список организаций, которые находятся в заданном радиусе/прямоугольной области относительно указанной точки на карте.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/organizations/location?latitude_min=55.75&latitude_max=55.76&longitude_min=37.61&longitude_max=37.62",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"organizations",
+						"location"
+					],
+					"query": [
+						{
+							"key": "latitude_min",
+							"value": "55.75"
+						},
+						{
+							"key": "latitude_max",
+							"value": "55.76"
+						},
+						{
+							"key": "longitude_min",
+							"value": "37.61"
+						},
+						{
+							"key": "longitude_max",
+							"value": "37.62"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вывод информации об организации по её идентификатору",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/organization/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Вывод информации об организации по её идентификатору (c вложенностью)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/organizationv2/1"
+			},
+			"response": []
+		},
+		{
+			"name": "поиск организации по названию",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/organizations/search/name/ООО \"Рога и Копыта\""
+			},
+			"response": []
+		},
+		{
+			"name": "поиск организации по названию деятельности",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "nebus",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/organizations/search/activity/Еда"
+			},
+			"response": []
+		}
+	]
+}

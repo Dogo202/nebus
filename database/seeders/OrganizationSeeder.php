@@ -36,7 +36,7 @@ class OrganizationSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $org1->activities()->attach([$food->id, $meatProducts->id]);
-        $org1->phones()->createMany([
+        $org1->phoneNumbers()->createMany([
             ['phone_number' => '2-222-222'],
             ['phone_number' => '3-333-333'],
         ]);
@@ -48,7 +48,7 @@ class OrganizationSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $org2->activities()->attach([$food->id, $dairyProducts->id]);
-        $org2->phones()->createMany([
+        $org2->phoneNumbers()->createMany([
             ['phone_number' => '4-444-444'],
         ]);
 
@@ -59,7 +59,7 @@ class OrganizationSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $org3->activities()->attach([$automobiles->id, $lightVehicles->id, $spareParts->id]);
-        $org3->phones()->createMany([
+        $org3->phoneNumbers()->createMany([
             ['phone_number' => '5-555-555'],
             ['phone_number' => '6-666-666'],
         ]);
@@ -71,7 +71,7 @@ class OrganizationSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $org4->activities()->attach([$automobiles->id, $heavyVehicles->id]);
-        $org4->phones()->createMany([
+        $org4->phoneNumbers()->createMany([
             ['phone_number' => '7-777-777'],
         ]);
 
@@ -82,7 +82,7 @@ class OrganizationSeeder extends Seeder
             'updated_at' => now(),
         ]);
         $org5->activities()->attach([$automobiles->id, $lightVehicles->id, $accessories->id]);
-        $org5->phones()->createMany([
+        $org5->phoneNumbers()->createMany([
             ['phone_number' => '8-888-888'],
         ]);
     }
