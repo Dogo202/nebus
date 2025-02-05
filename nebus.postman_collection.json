@@ -20,7 +20,7 @@
 						"type": "text"
 					}
 				],
-				"url": "http://localhost:8000/api/organizations/bulding/1"
+				"url": "http://localhost:8000/api/organizations/activity/1"
 			},
 			"response": []
 		},
