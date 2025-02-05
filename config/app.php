@@ -130,7 +130,8 @@ return [
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class
+        Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Session\SessionServiceProvider::class,
     ],
 
     'aliases' => [

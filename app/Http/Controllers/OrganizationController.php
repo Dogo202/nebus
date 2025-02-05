@@ -6,10 +6,49 @@ use App\Models\Organization;
 use App\Models\Activity;
 use App\Models\Building;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
+/**
+ * @OA\Info(
+ *     title="nebus api",
+ *     version="1.0.0",
+ *     description="test task",
+ *     @OA\Contact(
+ *         email="pistols202@gmail.com"
+ *     )
+ * )
+ */
 class OrganizationController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/organizations/bulding/{building_id}",
+     *     summary="Get organization by Building ID",
+     *     tags={"Organizations"},
+     *     @OA\Parameter(
+     *         name="building_id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="building_id", type="integer"),
+     *             @OA\Property(property="created_at", type="date"),
+     *             @OA\Property(property="updated_at", type="date"),
+     *             @OA\Property(property="phone_numbers", type="array",@OA\Items(type="string")),
+     *             @OA\Property(property="activities", type="array",@OA\Items(type="string")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Organization not found"
+     *     )
+     * )
+     */
     // Список всех организаций в здании
     public function getOrganizationsByBuilding($buildingId)
     {
@@ -32,6 +71,36 @@ class OrganizationController extends Controller
         return response()->json($organizations);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/organizations/activity/{activity_id}",
+     *     summary="Get organization by activity ID",
+     *     tags={"Organizations"},
+     *     @OA\Parameter(
+     *         name="activity_id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="building_id", type="integer"),
+     *             @OA\Property(property="created_at", type="date"),
+     *             @OA\Property(property="updated_at", type="date"),
+     *             @OA\Property(property="phone_numbers", type="array",@OA\Items(type="string")),
+     *             @OA\Property(property="activities", type="array",@OA\Items(type="string")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Organization not found"
+     *     )
+     * )
+     */
     // Список организаций по виду деятельности
     public function getOrganizationsByActivity($activityId)
     {
@@ -126,7 +195,50 @@ class OrganizationController extends Controller
 //        return response()->json($organizations);
 //    }
 
-
+    /**
+     * @OA\Get(
+     *     path="/api/organizations/location",
+     *     tags={"Organizations"},
+     *     @OA\Parameter(
+     *         name="latitude_min",
+     *         in="query",
+     *         required=true,
+     *         @OA\Schema(type="float")
+     *     ),@OA\Parameter(
+     *         name="latitude_max",
+     *         in="query",
+     *         required=true,
+     *         @OA\Schema(type="float")
+     *     ),@OA\Parameter(
+     *         name="longitude_min",
+     *         in="query",
+     *         required=true,
+     *         @OA\Schema(type="float")
+     *     ),@OA\Parameter(
+     *         name="longitude_max",
+     *         in="query",
+     *         required=true,
+     *         @OA\Schema(type="float")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="building_id", type="integer"),
+     *             @OA\Property(property="created_at", type="date"),
+     *             @OA\Property(property="updated_at", type="date"),
+     *             @OA\Property(property="phone_numbers", type="array",@OA\Items(type="string")),
+     *             @OA\Property(property="activities", type="array",@OA\Items(type="string")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Organization not found"
+     *     )
+     * )
+     */
     // Список организаций в заданном радиусе
     public function getOrganizationsByLocation(Request $request)
     {
@@ -153,6 +265,37 @@ class OrganizationController extends Controller
         return response()->json($organizations);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/api/organizations/{id}",
+     *     summary="Get organization by ID",
+     *     tags={"Organizations"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="building_id", type="integer"),
+     *             @OA\Property(property="created_at", type="date"),
+     *             @OA\Property(property="updated_at", type="date"),
+     *             @OA\Property(property="phone_numbers", type="array",@OA\Items(type="string")),
+     *             @OA\Property(property="activities", type="array",@OA\Items(type="string")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Organization not found"
+     *     )
+     * )
+     */
     // Информация о конкретной организации
     public function getOrganizationById($id)
     {
@@ -206,6 +349,37 @@ class OrganizationController extends Controller
         return response()->json($response);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/api/organizations/search/activity/{name}",
+     *     summary="Get organization by activity name",
+     *     tags={"Organizations"},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="building_id", type="integer"),
+     *             @OA\Property(property="created_at", type="date"),
+     *             @OA\Property(property="updated_at", type="date"),
+     *             @OA\Property(property="phone_numbers", type="array",@OA\Items(type="string")),
+     *             @OA\Property(property="activities", type="array",@OA\Items(type="string")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Organization not found"
+     *     )
+     * )
+     */
     // Поиск по виду деятельности (с учётом подкатегорий)
     public function searchOrganizationsByActivity($activityName)
     {
@@ -238,6 +412,37 @@ class OrganizationController extends Controller
         return response()->json($organizations);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/api/organizations/search/name/{name}",
+     *     summary="Get organization by organization name",
+     *     tags={"Organizations"},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="building_id", type="integer"),
+     *             @OA\Property(property="created_at", type="date"),
+     *             @OA\Property(property="updated_at", type="date"),
+     *             @OA\Property(property="phone_numbers", type="array",@OA\Items(type="string")),
+     *             @OA\Property(property="activities", type="array",@OA\Items(type="string")),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Organization not found"
+     *     )
+     * )
+     */
     // Поиск организации по названию
     public function searchOrganizationsByName($name)
     {
